@@ -1,0 +1,3 @@
+To run the tests, make a test_config.yml file using test/test_config.yml.sample as a base
+
+If you get GData::Client::CaptchaError's, that usually means your credentials are not correct
