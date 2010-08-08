@@ -1,6 +1,6 @@
 = fusion-tables
 
-Description goes here.
+Simple fork of http://code.google.com/p/mtbguru-fusiontables/ to gemify and add more functionality
 
 == Note on Patches/Pull Requests
  
