@@ -1,0 +1,8 @@
+Areas of improvement:
+
+* response format json/xml
+* "create table" should return name
+* describe table should include name
+* multiple batch statements for all actions (only insert now)
+* docs need updating, esp on response codes
+* response codes need to be more standardised
