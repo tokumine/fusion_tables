@@ -78,9 +78,7 @@ layer = new google.maps.FusionTablesLayer(136705, {
 });
 </code>
 
-As an example, here are all the Gasoline filling stations in the UK:
-
-<iframe width="500px" height="300px" scrolling="no"  src="http://tables.googlelabs.com/embedviz?viz=MAP&q=select+col0%2Ccol1%2Ccol2%2Ccol3%2Ccol4%2Ccol5%2Ccol6%2Ccol12%2Ccol13%2Ccol14%2Ccol15%2Ccol16%2Ccol17%2Ccol18%2Ccol19%2Ccol20%2Ccol21+from+214045+&h=false&lat=53.35710874569601&lng=-1.9775390625&z=5&l=col0"></iframe>
+You can also export your data (filtered and geocoded) to KML. As an example, here are "all the Gasoline filling stations in the UK":http://tables.googlelabs.com/exporttable?query=select+col0%2Ccol1%2Ccol2%2Ccol3%2Ccol4%2Ccol5%2Ccol6%2Ccol12%2Ccol13%2Ccol14%2Ccol15%2Ccol16%2Ccol17%2Ccol18%2Ccol19%2Ccol20%2Ccol21+from+214045+&o=kmllink&g=col0
 
 read "more here":http://code.google.com/apis/maps/documentation/javascript/overlays.html#FusionTables
 
