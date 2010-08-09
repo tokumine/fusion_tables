@@ -14,31 +14,83 @@
 
 module GData
   module Client
-    class Tables < Base
+    class FusionTables < Base    
+                          
+      # Show a list of fusion tables
+      def show_tables 
+        data = GData::Client::FusionTables::Data.parse(self.sql_get("SHOW TABLES"))
+        data.inject([]) do |x, row|
+          x << GData::Client::FusionTables::Table.new(self, row)        
+          x
+        end  
+      end
+
+            
+      # Create a new table. Return the corresponding table
+      # 
+      # Columns specified as [{:name => 'my_col_name', :datatype => 'my_datatype'}]
+      #
+      # Datatype must be one of:
+      # 
+      # * number 
+      # * string 
+      # * location
+      # * datetime
+      #
+      def create_table(table_name, columns)
+        
+        # Sanity check name
+        table_name = table_name.strip.gsub(/ /,'_')
+        
+        # ensure all column datatypes are valid
+        columns.each do |col|
+          if !DATATYPES.include? col[:datatype].downcase
+            raise ArgumentError, "Ensure input datatypes are: 'number', 'string', 'location' or 'datetime'"
+          end  
+        end
+        
+        # generate sql
+        fields = columns.map{ |col| "'#{col[:name]}': #{col[:datatype].upcase}" }.join(", ")
+        sql = "CREATE TABLE #{table_name} (#{fields})"
+        
+        # create table        
+        resp = self.sql_post(sql)
+        raise "unknown column type" if resp.body == "Unknown column type."
+        
+        # construct table object and return        
+        table_id = resp.body.split("\n")[1].chomp.to_i
+        table = GData::Client::FusionTables::Table.new(self, :table_id => table_id, :name => table_name)
+        table.get_headers
+        table
+      end
       
-      # Create a new table. Return the table id
-      def create_table(sql)
-          resp = self.sql_post(sql)
-          table_id = resp.body.split("\n")[1].chomp.to_i
-      end
-
-      # Returns a hash with the definitions of all columns 
-      def describe_table(table_id)
-          resp = self.sql_get("DESCRIBE #{table_id}")
-          
-          columns = {}
-          first = true
-          CSV::Reader.parse(resp.body) do |row|
-              if first
-                  first = false
-                  next
-              end
-
-              columns[row[1]] = { :id => row[0], :type => row[2] }
-          end
-
-          return columns
-      end
+      # Drops Fusion Tables
+      #
+      # options can be:
+      #
+      # * an integer for single drop 
+      # * array of integers for multi drop
+      # * a regex against table_name for flexible multi_drop 
+      #
+      def drop(options)
+        # collect ids
+        ids = []
+        ids << options  if options.class == Integer || options.class == String || Fixnum
+        ids =  options  if options.class == Array
+        
+        if options.class == Regexp
+          tables = show_tables
+          ids = tables.map { |table| table.id if options =~ table.name }.compact
+        end       
+        
+        # drop tables  
+        delete_count = 0
+        ids.each do |id|  
+          resp = self.sql_post("DROP TABLE #{id}") 
+          delete_count += 1 if resp.body.strip.downcase == 'ok'          
+        end
+        delete_count      
+      end        
     end
   end
 end

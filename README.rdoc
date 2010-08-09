@@ -15,3 +15,34 @@ Simple fork of http://code.google.com/p/mtbguru-fusiontables/ to gemify and add 
 == Copyright
 
 Copyright (c) 2010 Simon Tokumine. See LICENSE for details.
+
+Would be cool to be able to do AR style things in the future
+
+#Directory service ops
+fusion_tables = FusionTablesDirectory.all
+fusion_table  = FusionTablesDirectory.find(:id) # FusionTable/Table class object(s)
+fusion_table.describe # DOES DESCRIBE FUNCTION
+
+#Table ops
+my_table = FusionTable.new {:col1 => data, :col2 => data} #not neccessary?
+my_table.save
+my_table.add_data = {:col1 => data, :col2 => data} #have add_data to be able to add data in chunks 
+
+
+#Row/data ops
+
+#Retrieve
+data_rows = my_table.all
+data_rows = my_table.all(sql) #fairly generic row objects, each one has shared class vars
+row = data_rows.first
+
+#Update
+row.name = "testing"
+row.save #=> updates it
+
+#Delete
+delete.save #=> deletes it
+
+
+
+
