@@ -10,14 +10,12 @@ h2. API examples
  
 The best place to see what's going on is in the tests, but this is a good starting point.
 
-<code>
-	
+<pre><code>
 # Connect to service	
 @ft = GData::Client::FusionTables.new      
 @ft.clientlogin(username, password)
 
 # Create a new table
-
 # Configure the columns you want
 cols = [{:name => "boat name"		, :datatype => 'string' },
 				{:name => "value"		 		, :datatype => 'number' },
@@ -38,9 +36,7 @@ cols = [{:name => "boat name"		, :datatype => 'string' },
 @ft.drop @table.id										# table id
 @ft.drop [@table1.id, @table2.id]			# arrays of table ids
 @ft.drop /yacht/ 											# regex 
-
-
-</code>
+</code></pre>
 
 h2. Fusion Tables secret Geospatial Sauce
 
@@ -56,27 +52,27 @@ h2. Thousands of geometries rendered in near real time, integrated with google m
 
 Adding a fusion tables datalayer with a zillion points/polygons to your v3 map is as simple as:
 
-<code>
+<pre><code>
 layer = new google.maps.FusionTablesLayer(139529);
-</code>
+</code></pre>
 
 That's it
 
 You can also refine the tiles by SQL, and can even do so dynamically:
 
-<code>
+<pre><code>
 layer = new google.maps.FusionTablesLayer(198945, {
   query: "SELECT address FROM 198945 WHERE ridership > 5000"}
 );
-</code>
+</code></pre>
 
 Finally, fusion tables also lets you make Heatmaps
 
-<code>
+<pre><code>
 layer = new google.maps.FusionTablesLayer(136705, {
   heatmap: true
 });
-</code>
+</code></pre>
 
 You can also export your data (filtered and geocoded) to KML. As an example, here are "all the Gasoline filling stations in the UK":http://tables.googlelabs.com/exporttable?query=select+col0%2Ccol1%2Ccol2%2Ccol3%2Ccol4%2Ccol5%2Ccol6%2Ccol12%2Ccol13%2Ccol14%2Ccol15%2Ccol16%2Ccol17%2Ccol18%2Ccol19%2Ccol20%2Ccol21+from+214045+&o=kmllink&g=col0
 
