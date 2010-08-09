@@ -1,6 +1,6 @@
 h1. fusion-tables
 
-This API lets you easily upload data to Google Fusion Tables from your Ruby application.
+This API lets you easily interact with Google Fusion Tables from your Ruby application.
 
 h2. Installation
 
@@ -29,6 +29,8 @@ cols = [{:name => "boat name",   :datatype => 'string' },
 # Insert data
 
 # Update data
+
+# Select data
 
 # Delete data
 
