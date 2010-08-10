@@ -67,6 +67,8 @@ row_ids = @table.select "ROWID"
 
 h2. Fusion Tables secret Geospatial Sauce
 
+*"Map example":http://tables.googlelabs.com/DataSource?snapid=71528*
+
 Fusion Tables is a labs product from Google. You can "read more here":http://tables.googlelabs.com/, but the key thing is that it gives you *access to the google tile mill for ultra-fast generating of custom google map layers across massive datasets* 
 
 Fusion Tables supports the following geometry types:
