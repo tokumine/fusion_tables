@@ -8,10 +8,12 @@ gem install fusion_tables
 
 h2. To Use
 
+bq.
 require 'fusion_tables'
 
 or in Rails 2.3.x
 
+bq.
 config.gem 'fusion_tables'
 
 h2. API examples
