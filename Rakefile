@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "fusion_tables"
     gem.summary = %Q{Google Fusion Tables API wrapper}
-    gem.description = %Q{Google Fusion Tables API wrapper}
+    gem.description = %Q{A simple Google Fusion Tables API wrapper. Supports bulk inserts and most API functions}
     gem.email = "simon@tinypla.net"
     gem.homepage = "http://github.com/tokumine/fusion-tables"
     gem.authors = ["Simon Tokumine", "Tom Verbeure"]
