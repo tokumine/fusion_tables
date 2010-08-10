@@ -44,7 +44,7 @@ cols = [{:name => "friend name",    :datatype => 'string' },
 data = [{"friend name" 	=> "Eric Wimp", 
          "age"          => 25, 
          "meeting time" => Time.utc(2010,"aug",10,20,15,1),
-         "where"        => "29 Acacia Road, Nuttytown"]
+         "where"        => "29 Acacia Road, Nuttytown"}]
 
 @table.insert data
 
