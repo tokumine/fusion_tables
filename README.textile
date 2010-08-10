@@ -6,6 +6,14 @@ h2. Installation
 
 gem install fusion_tables
 
+h2. To Use
+
+require 'fusion_tables'
+
+or in Rails 2.3.x
+
+config.gem 'fusion_tables'
+
 h2. API examples
  
 The best place to see examples of uploading KML is in the tests, but this is a good starting point.
