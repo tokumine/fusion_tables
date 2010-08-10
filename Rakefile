@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "fusion_tables"
-    gem.summary = %Q{initial setup}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "simon@japancentre.com"
+    gem.summary = %Q{Google Fusion Tables API wrapper}
+    gem.description = %Q{Google Fusion Tables API wrapper}
+    gem.email = "simon@tinypla.net"
     gem.homepage = "http://github.com/tokumine/fusion-tables"
-    gem.authors = ["Tom Verbeure", "Simon Tokumine"]
+    gem.authors = ["Simon Tokumine", "Tom Verbeure"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_dependency "gdata", ">= 0"
+    gem.add_dependency "gdata", ">= 1.1.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
