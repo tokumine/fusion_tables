@@ -4,17 +4,21 @@ This API lets you easily interact with Google Fusion Tables from your Ruby appli
 
 h2. Installation
 
+<pre><code>
 gem install fusion_tables
+</code></pre>
 
 h2. To Use
 
-bq.
+<pre><code>
 require 'fusion_tables'
+</code></pre>
 
 or in Rails 2.3.x
 
-bq.
+<pre><code>
 config.gem 'fusion_tables'
+</code></pre>
 
 h2. API examples
  
