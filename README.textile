@@ -53,7 +53,7 @@ data = [{"friend name" 	=> "Eric Wimp",
 # Count data
 @table.count #=> 1
 
-# Select data
+# Select data & RowID for publishing to Google Maps
 @table.select #=> data
 row_ids = @table.select "ROWID"
 
