@@ -2,11 +2,6 @@ require 'helper'
 
 class TestExt < Test::Unit::TestCase
  
- should "remove comment block below to activate tests they are sloooow" do
-   assert true
- end
- 
-=begin
   context "The Fusion Tables helper functions" do
     setup do 
       init_config
@@ -15,20 +10,20 @@ class TestExt < Test::Unit::TestCase
     end
   
     
-    should "raise ArgumentError if supply unknown datatypes to it" do
+    should "raise ArgumentError if supply unknown types to it" do
       assert_raise ArgumentError do
-        @ft.create_table "test table", [{:name => "test_col", :datatype => "billys birthday" }]
+        @ft.create_table "test table", [{:name => "test_col", :type => "billys birthday" }]
       end
     end  
   
     should "let you create a table if you get everything right" do
-      table = @ft.create_table "test_table", [{:name => "test_col", :datatype => "string" }]
+      table = @ft.create_table "test_table", [{:name => "test_col", :type => "string" }]
       assert_equal table.class, GData::Client::FusionTables::Table
       @ft.drop(table.id)
     end
 
     should "correct your table name to a certain degree on create" do
-      table = @ft.create_table "test table", [{:name => "test col", :datatype => "string" }]
+      table = @ft.create_table "test table", [{:name => "test col", :type => "string" }]
       assert_equal table.name, "test_table"
       @ft.drop(table.id)
     end
@@ -39,19 +34,19 @@ class TestExt < Test::Unit::TestCase
     end
     
     should "be possible to delete a table with an id" do
-      table = @ft.create_table "test_table", [{:name => "test col", :datatype => "string" }]
+      table = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
       assert_equal @ft.drop(table.id), 1
     end
 
     should "be possible to delete tables with an array of ids" do
-      table1 = @ft.create_table "test_table", [{:name => "test col", :datatype => "string" }]
-      table2 = @ft.create_table "test_table", [{:name => "test col", :datatype => "string" }]
+      table1 = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
+      table2 = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
       assert_equal @ft.drop([table1.id, table2.id]), 2
     end
  
     should "be possible to delete multiple tables with a regex" do
-      table1 = @ft.create_table "test_table", [{:name => "test col", :datatype => "string" }]
-      table2 = @ft.create_table "test_table", [{:name => "test col", :datatype => "string" }]
+      table1 = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
+      table2 = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
       assert_equal @ft.drop(/^test_/), 2      
     end
    
@@ -59,5 +54,5 @@ class TestExt < Test::Unit::TestCase
       assert_equal @ft.drop(235243875629384756), 0      
     end    
   end
-=end
+
 end

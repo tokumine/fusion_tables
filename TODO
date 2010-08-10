@@ -6,3 +6,4 @@ Areas of improvement:
 * multiple batch statements for all actions (only insert now)
 * docs need updating, esp on response codes
 * response codes need to be more standardised
+* irritating can't include ROWID with * in selects

@@ -28,9 +28,9 @@ module GData
             
       # Create a new table. Return the corresponding table
       # 
-      # Columns specified as [{:name => 'my_col_name', :datatype => 'my_datatype'}]
+      # Columns specified as [{:name => 'my_col_name', :type => 'my_type'}]
       #
-      # Datatype must be one of:
+      # Type must be one of:
       # 
       # * number 
       # * string 
@@ -42,15 +42,15 @@ module GData
         # Sanity check name
         table_name = table_name.strip.gsub(/ /,'_')
         
-        # ensure all column datatypes are valid
+        # ensure all column types are valid
         columns.each do |col|
-          if !DATATYPES.include? col[:datatype].downcase
-            raise ArgumentError, "Ensure input datatypes are: 'number', 'string', 'location' or 'datetime'"
+          if !DATATYPES.include? col[:type].downcase
+            raise ArgumentError, "Ensure input types are: 'number', 'string', 'location' or 'datetime'"
           end  
         end
         
         # generate sql
-        fields = columns.map{ |col| "'#{col[:name]}': #{col[:datatype].upcase}" }.join(", ")
+        fields = columns.map{ |col| "'#{col[:name]}': #{col[:type].upcase}" }.join(", ")
         sql = "CREATE TABLE #{table_name} (#{fields})"
         
         # create table        

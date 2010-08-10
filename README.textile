@@ -17,22 +17,37 @@ The best place to see what's going on is in the tests, but this is a good starti
 
 # Create a new table
 # Configure the columns you want
-cols = [{:name => "boat name",   :datatype => 'string' },
-        {:name => "value",       :datatype => 'number' },
-        {:name => "when bought", :datatype => 'datetime' },
-        {:name => "where",       :datatype => 'location' }]
+cols = [{:name => "friend name",    :datatype => 'string' },
+        {:name => "age",            :datatype => 'number' },
+        {:name => "meeting time",   :datatype => 'datetime' },
+        {:name => "where",          :datatype => 'location' }]
 
 # Create the table				
-@table = @ft.create_table "My yacht locations", cols
+@table = @ft.create_table "My upcoming meetings", cols
 @table.id #=> 42342 (the table's google id)
 
 # Insert data
+data = [{"friend name" 	=> "Eric Wimp", 
+				 "age" 					=> 25, 
+				 "meeting time" => Time.utc(2010,"aug",10,20,15,1),
+				 "where" 				=> "29 Acacia Road, Nuttytown"]
 
-# Update data
+@table.insert data
+
+# Note - the insert method chunks the data array into 500 row chunks
+
+# Count data
+@table.count #=> 1
 
 # Select data
+@table.select #=> data
+row_ids = @table.select "ROWID"
+
+# Update data (not working)
+# @table.update row_id, {:age => 26}
 
 # Delete data
+@table.delete row_id
 
 # Drop tables
 @ft.drop @table.id                    # table id
@@ -52,7 +67,7 @@ Fusion Tables supports the following geometry types:
 
 h2. Thousands of geometries rendered in near real time, integrated with google maps v3
 
-Adding a fusion tables datalayer with a zillion points/polygons to your v3 map is as simple as:
+Adding a fusion tables datalayer with many points/polygons to your v3 map is as simple as:
 
 <pre><code>
 layer = new google.maps.FusionTablesLayer(139529);

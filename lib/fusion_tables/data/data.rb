@@ -50,7 +50,7 @@ module GData
         end                
                                 
         private
-        # Encodes row according to datatype
+        # Encodes row according to type
         def encode
           
         end
