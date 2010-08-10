@@ -132,7 +132,7 @@ h2. Copyright
 
 Largely based on Tom Verbeure's work for MTBGuru: http://code.google.com/p/mtbguru-fusiontables/
 
-Copyright (c) 2010 Simon Tokumine. See LICENSE for details.
+Copyright (c) 2010 Tom Verbeure, Simon Tokumine. See LICENSE for details.
 
 
 
