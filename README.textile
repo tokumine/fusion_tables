@@ -4,7 +4,7 @@ This API lets you easily interact with Google Fusion Tables from your Ruby appli
 
 h2. Installation
 
-gem install fusion-tables
+gem install fusion_tables
 
 h2. API examples
  
