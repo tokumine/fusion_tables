@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "TODO",
      "VERSION",
+     "fusion_tables.gemspec",
      "lib/fusion_tables.rb",
      "lib/fusion_tables/client/fusion_tables.rb",
      "lib/fusion_tables/data/data.rb",
