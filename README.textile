@@ -73,7 +73,7 @@ h2. Fusion Tables secret Geospatial Sauce
 
 *"Map example":http://tables.googlelabs.com/DataSource?snapid=71528*
 
-Fusion Tables is a labs product from Google. You can "read more here":http://tables.googlelabs.com/, but the key thing is that it gives you *access to the google tile mill for ultra-fast generating of custom google map layers across massive datasets* 
+Fusion Tables is a labs product from Google. You can "read more here":http://tables.googlelabs.com/, but the key thing is that it gives you *access to the google tile mill for fast generating of google map layers across large datasets* 
 
 Fusion Tables supports the following geometry types:
 
@@ -81,7 +81,7 @@ Fusion Tables supports the following geometry types:
 * addresses (automatically geocodes them for you)
 * KML (point, polyline, polygon, multipolygon)
 
-h2. Thousands of geometries rendered in near real time, integrated with google maps v3
+h2. Integrate with google maps v3
 
 Adding a fusion tables datalayer with many points/polygons to your v3 map is as simple as:
 
