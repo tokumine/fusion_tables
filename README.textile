@@ -2,6 +2,10 @@ h1. fusion-tables
 
 This gem lets you easily interact with Google Fusion Tables from your Ruby application.
 
+h2. Gem Dependencies
+
+* gdata >= 1.1.1
+
 h2. Installation
 
 bc. gem install fusion_tables
