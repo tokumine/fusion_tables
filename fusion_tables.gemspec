@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Simon Tokumine", "Tom Verbeure"]
   s.date = %q{2010-08-10}
   s.description = %q{A simple Google Fusion Tables API wrapper. Supports bulk inserts and most API functions}
-  s.email = %q{simon@tinypla.net}
+  s.email = %q{si@tinypla.net}
   s.extra_rdoc_files = [
     "LICENSE",
      "README.textile",
