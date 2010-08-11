@@ -49,10 +49,10 @@ row_ids = table_1.select "ROWID"
 @ft.drop /yacht/                      # regex on table name
 
 # Creating a table
-cols = [{:name => "friend name",    :datatype => 'string' },
-        {:name => "age",            :datatype => 'number' },
-        {:name => "meeting time",   :datatype => 'datetime' },
-        {:name => "where",          :datatype => 'location' }]
+cols = [{:name => "friend name",    :type => 'string' },
+        {:name => "age",            :type => 'number' },
+        {:name => "meeting time",   :type => 'datetime' },
+        {:name => "where",          :type => 'location' }]
 
 new_table = @ft.create_table "My upcoming meetings", cols
 
