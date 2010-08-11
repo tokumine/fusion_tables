@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fusion_tables}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon Tokumine", "Tom Verbeure"]
-  s.date = %q{2010-08-10}
+  s.date = %q{2010-08-12}
   s.description = %q{A simple Google Fusion Tables API wrapper. Supports bulk inserts and most API functions}
-  s.email = %q{si@tinypla.net}
+  s.email = %q{simon@tinypla.net}
   s.extra_rdoc_files = [
     "LICENSE",
      "README.textile",
@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
      "Rakefile",
      "TODO",
      "VERSION",
+     "examples/compare_tweets.rb",
+     "examples/credentials.example.yml",
      "fusion_tables.gemspec",
      "lib/fusion_tables.rb",
      "lib/fusion_tables/client/fusion_tables.rb",
@@ -47,7 +49,8 @@ Gem::Specification.new do |s|
     "test/helper.rb",
      "test/test_client.rb",
      "test/test_ext.rb",
-     "test/test_table.rb"
+     "test/test_table.rb",
+     "examples/compare_tweets.rb"
   ]
 
   if s.respond_to? :specification_version then
