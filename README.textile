@@ -1,31 +1,24 @@
 h1. fusion-tables
 
-This gem lets you easily interact with the Google Fusion Tables API from your Ruby application.
+This gem lets you easily interact with Google Fusion Tables from your Ruby application.
 
 h2. Installation
 
-<pre><code>
-gem install fusion_tables
-</code></pre>
+bc. gem install fusion_tables
 
 h2. To Use
 
-<pre><code>
-require 'fusion_tables'
-</code></pre>
+bc. require 'fusion_tables'
 
 or in Rails 2.3.x
 
-<pre><code>
-config.gem 'fusion_tables'
-</code></pre>
+bc. config.gem 'fusion_tables'
 
 h2. API examples
  
-The best place to see examples of uploading KML is in the tests, but this is a good starting point.
+The best place to see examples (including uploading KML) is in the tests, but this is a good starting point.
 
-<pre><code>
-# Connect to service	
+<pre><code># Connect to service	
 @ft = GData::Client::FusionTables.new      
 @ft.clientlogin(username, password)
 
@@ -41,6 +34,10 @@ table_1.count #=> 1
 
 # Select data
 table_1.select 
+ #=> data
+
+# Select data with conditions
+table_1.select "name", "WHERE x=n"
  #=> data
 
 # Select ROWIDs
@@ -86,9 +83,7 @@ h2. Integrate with google maps v3
 
 Adding a fusion tables datalayer with many points/polygons to your v3 map is as simple as:
 
-<pre><code>
-layer = new google.maps.FusionTablesLayer(139529);
-</code></pre>
+bc. layer = new google.maps.FusionTablesLayer(139529);
 
 That's it
 
@@ -112,10 +107,9 @@ You can also export your data (filtered and geocoded) to KML. As an example, her
 
 read "more here":http://code.google.com/apis/maps/documentation/javascript/overlays.html#FusionTables
 
-h2. A word of warning...
+h2. A few words of warning...
 
-# Google has a recent habit of deleting projects. This is still a labs project, and may disappear at any time
-# The API is still very young and *will change* 
+# The API is still very young and *will probably change* 
 # Currently you have to make a table public before you can display it on a map, unfortunately, this can only be done on the web interface. A suggested workaround is to put all your data in 1 big public table, and then query for the data you want to display based off a key/flag column
 
 h2. Note on Patches/Pull Requests
