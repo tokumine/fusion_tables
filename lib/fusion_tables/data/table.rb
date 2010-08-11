@@ -114,11 +114,11 @@ module GData
           data.inject([]) do |ar,h|
             ret = {}
             h.each do |key, value|              
-              ret[key] = case get_datatype(key)
-                            when "number"   then  "#{value}"
-                            when "datetime" then  "'#{value.strftime("%m-%d-%Y")}'"
-                            else                  "'#{value.gsub(/\\/, '\&\&').gsub(/'/, "''")}'"                            
-                          end
+              ret["'#{key.to_s}'"] = case get_datatype(key)
+                when "number"   then  "#{value}"
+                when "datetime" then  "'#{value.strftime("%m-%d-%Y")}'"
+                else                  "'#{value.gsub(/\\/, '\&\&').gsub(/'/, "''")}'"                            
+              end
             end
             ar << ret
             ar      
