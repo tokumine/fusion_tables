@@ -1,6 +1,6 @@
 h1. fusion-tables
 
-This gem lets you easily interact with Google Fusion Tables from your Ruby application.
+This gem lets you easily interact with Google Fusion Tables from your Ruby application. Here are some example "maps and charts":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
 
 h2. Gem Dependencies
 
@@ -73,7 +73,7 @@ new_table.delete row_id
 
 h2. Fusion Tables secret Geospatial Sauce
 
-*"Map example":http://tables.googlelabs.com/DataSource?snapid=71528*
+*"Geolocated Tweets example":http://tables.googlelabs.com/DataSource?snapid=73106*
 
 Fusion Tables is a labs product from Google. You can "read more here":http://tables.googlelabs.com/, but the key thing is that it gives you *access to the google tile mill for fast generation of google map layers across large datasets* 
 
