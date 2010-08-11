@@ -33,6 +33,8 @@ Gem::Specification.new do |s|
      "lib/fusion_tables/data/data.rb",
      "lib/fusion_tables/data/table.rb",
      "lib/fusion_tables/ext/fusion_tables.rb",
+     "pkg/fusion_tables-0.1.0.gem",
+     "pkg/fusion_tables-0.1.1.gem",
      "test/README",
      "test/helper.rb",
      "test/test_client.rb",
