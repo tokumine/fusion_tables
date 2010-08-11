@@ -20,7 +20,7 @@ bc. config.gem 'fusion_tables'
 
 h2. API examples
  
-The best place to see examples (including uploading KML) is in the tests, but this is a good starting point.
+Please explore the "worked twitter example":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb and the "tests":http://github.com/tokumine/fusion-tables/tree/master/test/. Here is a brief rundown:
 
 <pre><code># Connect to service	
 @ft = GData::Client::FusionTables.new      
