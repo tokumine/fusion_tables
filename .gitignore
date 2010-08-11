@@ -16,7 +16,6 @@ tmtags
 ## PROJECT::GENERAL
 coverage
 rdoc
-pkg
 
 ## PROJECT::TEST
 test/test_config.yml
