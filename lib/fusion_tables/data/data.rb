@@ -33,17 +33,29 @@ module GData
           headers = []
           
           first = true
-          CSV::Reader.parse(response.body) do |row|
-            if first
+          require 'CSV'
+          if CSV.const_defined? :Reader
+            CSV::Reader.parse(response.body) do |row|
+              if first
                 first = false
                 headers = row.map { |x|x.strip.downcase.gsub(" ","_").to_sym }
                 next
+              end
+              body << Hash[*headers.zip(row).flatten]
             end
-            body << Hash[*headers.zip(row).flatten]
-          end
+          else
+            CSV.parse(response.body) do |row|
+              if first
+                first = false
+                headers = row.map { |x|x.strip.downcase.gsub(" ","_").to_sym }
+                next
+              end
+              body << Hash[*headers.zip(row).flatten]
+            end              
+          end              
           self.new :headers => headers, :body => body
         end
-                    
+                            
         # Implement enumerable                
         def each
           @body.each { |i| yield i }
