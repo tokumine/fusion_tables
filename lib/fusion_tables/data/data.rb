@@ -33,7 +33,6 @@ module GData
           headers = []
           
           first = true
-          require 'CSV'
           if CSV.const_defined? :Reader
             CSV::Reader.parse(response.body) do |row|
               if first

@@ -10,6 +10,15 @@ h2. Installation
 
 bc. gem install fusion_tables
 
+h2. Rubies
+
+Tested on:
+
+* 1.8.7
+* 1.9.2-p0
+
+Note: The GData gem is not working on 1.9
+
 h2. To Use
 
 bc. require 'fusion_tables'
