@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
      "pkg/fusion_tables-0.1.1.gem",
      "pkg/fusion_tables-0.1.2.gem",
      "pkg/fusion_tables-0.2.0.gem",
+     "pkg/fusion_tables-0.2.1.gem",
      "test/README",
      "test/helper.rb",
      "test/test_client.rb",
