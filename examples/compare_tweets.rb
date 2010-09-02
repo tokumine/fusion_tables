@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+# encoding: UTF-8
 #
 # Twitter Fusion Tables Mashup
 # S.Tokumine 2010
@@ -22,6 +22,7 @@ include GeoRuby
 include SimpleFeatures
 require 'fusion_tables'
 require 'time'
+require 'yaml'
 
 class Object
   def try(method, *args, &block)
@@ -48,7 +49,7 @@ places = {
 # Configure fusion tables
 ft = GData::Client::FusionTables.new
 ft.clientlogin(config["google_username"], config["google_password"])
-table_name = "twitter_fusion"
+table_name = "twitter_fusion_test"
 cols = [
   {:name => 'screen_name',  :type => 'string'},  
   {:name => 'avatar',       :type => 'string'},
