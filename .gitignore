@@ -16,9 +16,11 @@ tmtags
 ## PROJECT::GENERAL
 coverage
 rdoc
+examples/credentials.yml
 
 ## PROJECT::TEST
 test/test_config.yml
+
 
 ## PROJECT::SPECIFIC
 
