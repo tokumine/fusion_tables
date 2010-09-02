@@ -4,7 +4,7 @@ This gem lets you easily interact with Google Fusion Tables from your Ruby appli
 
 h2. Gem Dependencies
 
-* gdata >= 1.1.1
+* gdata_19 >= 1.1.2
 
 h2. Installation
 
@@ -16,8 +16,6 @@ Tested on:
 
 * 1.8.7
 * 1.9.2-p0
-
-Note: The GData gem is not working on 1.9
 
 h2. To Use
 
