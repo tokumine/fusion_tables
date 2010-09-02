@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fusion_tables}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon Tokumine", "Tom Verbeure"]
-  s.date = %q{2010-09-01}
+  s.date = %q{2010-09-02}
   s.description = %q{A simple Google Fusion Tables API wrapper. Supports bulk inserts and most API functions}
   s.email = %q{simon@tinypla.net}
   s.extra_rdoc_files = [
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
      "pkg/fusion_tables-0.1.0.gem",
      "pkg/fusion_tables-0.1.1.gem",
      "pkg/fusion_tables-0.1.2.gem",
+     "pkg/fusion_tables-0.2.0.gem",
      "test/README",
      "test/helper.rb",
      "test/test_client.rb",
@@ -62,14 +63,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
-      s.add_runtime_dependency(%q<gdata>, [">= 1.1.1"])
+      s.add_runtime_dependency(%q<gdata_19>, [">= 1.1.2"])
     else
       s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
-      s.add_dependency(%q<gdata>, [">= 1.1.1"])
+      s.add_dependency(%q<gdata_19>, [">= 1.1.2"])
     end
   else
     s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
-    s.add_dependency(%q<gdata>, [">= 1.1.1"])
+    s.add_dependency(%q<gdata_19>, [">= 1.1.2"])
   end
 end
 
