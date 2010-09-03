@@ -1,6 +1,6 @@
 h1. fusion-tables
 
-This gem lets you easily interact with Google Fusion Tables from your Ruby application. Here are some "example maps and charts":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
+This gem lets you easily interact with Google Fusion Tables from your Ruby application. Here is a "live visualisation of london bike hire availability":http://tables.googlelabs.com/DataSource?snapid=78314 and some "example maps and charts":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
 
 h2. Gem Dependencies
 
@@ -27,7 +27,11 @@ bc. config.gem 'fusion_tables'
 
 h2. API examples
  
-Please explore the "worked twitter example":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb and the "tests":http://github.com/tokumine/fusion-tables/tree/master/test/. Here is a brief rundown:
+"Twitter example":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
+"Boris bike example":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
+"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/. 
+
+Here is a brief rundown:
 
 <pre><code># Connect to service	
 @ft = GData::Client::FusionTables.new      
