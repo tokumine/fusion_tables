@@ -49,7 +49,7 @@ places = {
 # Configure fusion tables
 ft = GData::Client::FusionTables.new
 ft.clientlogin(config["google_username"], config["google_password"])
-table_name = "twitter_fusion_test"
+table_name = "TwitterFusion"
 cols = [
   {:name => 'screen_name',  :type => 'string'},  
   {:name => 'avatar',       :type => 'string'},
