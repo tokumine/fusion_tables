@@ -29,7 +29,7 @@ h2. API examples
  
 "Twitter example":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
 "Boris bike example":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
-"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/. 
+"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/
 
 Here is a brief rundown:
 
@@ -122,9 +122,9 @@ You can also export your data (filtered and geocoded) to KML. As an example, her
 
 read "more here":http://code.google.com/apis/maps/documentation/javascript/overlays.html#FusionTables
 
-h2. A few words of warning...
+h2. Known Issues
 
-# The API is still very young and *will probably change* 
+# The gem uses the Google gdata_19 gem which conflicts with the GData2 gem. Uninstall gdata2 to regain sanity.
 # Currently you have to make a table public before you can display it on a map, unfortunately, this can only be done on the web interface. A suggested workaround is to put all your data in 1 big public table, and then query for the data you want to display based off a key/flag column
 
 h2. Note on Patches/Pull Requests
