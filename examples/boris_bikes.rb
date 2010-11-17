@@ -11,6 +11,7 @@ require 'geo_ruby'
 require 'fusion_tables'
 require 'time'
 require 'json'
+require 'yaml'
 require 'ap'
 include GeoRuby
 include SimpleFeatures
@@ -32,13 +33,13 @@ def color max, number_to_color, min=0, opacity=80
 end
 
 def to_google(x,y)
-  a = `echo "#{x} #{y}" | cs2cs + +init=epsg:4326 +to +init=epsg:900913 -f "%.12f"`
+  a = `echo "#{x} #{y}" | cs2cs + +init=epsg:4326 +to +init=epsg:3785 -f "%.12f"`
   a = a.split(" ")
   {:x => a[0], :y => a[1]}
 end
 
 def from_google(x,y)
-  a = `echo "#{x} #{y}" | cs2cs + +init=epsg:900913 +to +init=epsg:4326 -f "%.12f"`
+  a = `echo "#{x} #{y}" | cs2cs + +init=epsg:3785 +to +init=epsg:4326 -f "%.12f"`
   a = a.split(" ")
   {:x => a[0], :y => a[1]}
 end
