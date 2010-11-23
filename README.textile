@@ -82,6 +82,35 @@ new_table.insert data
 new_table.delete row_id
 </code></pre>
 
+Currently UPDATE query is not implemented, you could always delete all data and start over again. 
+
+But you could also do this:
+
+<pre><code>
+require 'active_support/core_ext/array/grouping'
+
+# get the table as above..
+
+data = []
+list = table.select("*", "WHERE location contains '%20' ORDER BY permalink LIMIT 2")
+
+list.each do |item|
+  data << item
+  id  = table.select("ROWID", "WHERE permalink = '%s'" % item[:permalink])
+  id  = id.first[:rowid]
+  puts "deleting %d" % id
+  table.delete(id)
+end
+
+#modify location, remove text that breaks longlat value..
+data.map {|item| item[:location] = item[:location].gsub('%20','')}
+
+data.in_groups_of(50, false) do |group|
+  puts "inserting to fusion table: %d items" % group.size
+  table.insert(group)
+end
+</code></pre>
+
 h2. Fusion Tables secret Geospatial Sauce
 
 *"Geolocated Tweets example":http://tables.googlelabs.com/DataSource?snapid=73106*
