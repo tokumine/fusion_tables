@@ -105,6 +105,10 @@ module GData
           GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
         end
         
+        # Delete all the data from one table
+        def truncate!
+          GData::Client::FusionTables::Data.parse(@client.sql_post("DELETE FROM #{@id}")).body
+        end
         
         def get_headers
           @headers ||= describe
