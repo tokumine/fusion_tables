@@ -87,16 +87,13 @@ module GData
 
         # Runs update on rows and return data obj
         # No bulk update, so may aswell drop table and start again
-        #
-        # TODO: FIXME
-        #
-        #def update row_id, data          
-        #  data = encode([data]).first
-        #  data = data.to_a.map{|x| x.join("=")}.join(", ")
-        #  
-        #  sql = "UPDATE #{@id} SET #{data} WHERE ROWID = #{row_id}"
-        #  GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
-        #end
+        def update row_id, data          
+          data = encode([data]).first
+          data = data.to_a.map{|x| x.join("=")}.join(", ")
+          
+          sql = "UPDATE #{@id} SET #{data} WHERE ROWID = #{row_id}"
+          GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
+        end
         
         # delete row
         def delete row_id
