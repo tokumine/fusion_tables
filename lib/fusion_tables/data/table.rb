@@ -66,7 +66,8 @@ module GData
         # Fields are escaped and formatted for FT based on type
         #
         def insert data
-          
+          data = [data] unless data.respond_to?(:to_ary)
+
           # encode values to insert
           data = encode data
           
