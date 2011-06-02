@@ -20,10 +20,10 @@ class TestTable < Test::Unit::TestCase
                              :house => "POINT(1,1)"}]
       
       row = data.first
-      assert_equal row[:firstname], "'\\\\bob''s pizza'"
-      assert_equal row[:phone],     "#{12}"
-      assert_equal row[:dob],       "'08-10-2010'"
-      assert_equal row[:house],     "'POINT(1,1)'"
+      assert_equal "'\\\\bob''s pizza'", row[:firstname]
+      assert_equal "#{12}",              row[:phone] 
+      assert_equal "'08-10-2010'",       row[:dob]
+      assert_equal "'POINT(1,1)'",       row[:house]
     end
     
     should "be able to insert 1 row of data" do
@@ -58,7 +58,7 @@ class TestTable < Test::Unit::TestCase
                }
 
         @table.insert data
-        assert_equal @table.count, 2
+        assert_equal 2, @table.count
     end
     
     should "be able to select the rows" do
@@ -70,7 +70,7 @@ class TestTable < Test::Unit::TestCase
                }
 
         @table.insert data
-        assert_equal @table.select, [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}]        
+        assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}], @table.select
     end
   end
 end
