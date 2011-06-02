@@ -134,7 +134,7 @@ module GData
           @headers.each do |h|
             return h[:type] if h[:name] == column_name.to_s
           end            
-          raise ArgumentError "The column doesn't exist"
+          raise ArgumentError, "The column doesn't exist"
         end      
       end
     end
