@@ -1,7 +1,7 @@
 fusion-tables
 ==============
 
-This gem lets you easily interact with "Google Fusion Tables":http://www.google.com/fusiontables/Home from your Ruby application. "Blog post":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
+This gem lets you easily interact with [Google Fusion Tables](http://www.google.com/fusiontables/Home) from your Ruby application. [Blog post](http://www.tokumine.com/2010/08/10/fusion-tables-gem/).
 
 Demo and examples
 ------------------
