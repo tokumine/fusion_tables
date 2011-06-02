@@ -2,11 +2,11 @@ h1. fusion-tables
 
 This gem lets you easily interact with Google Fusion Tables from your Ruby application. "Blog post":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
 
-h2. Demo and API examples
+h2. Demo and examples
 
-Twitter "demo":http://tables.googlelabs.com/DataSource?snapid=73106 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
-Boris bike "demo":http://tables.googlelabs.com/DataSource?snapid=78314 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
-"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/
+* Twitter "demo":http://tables.googlelabs.com/DataSource?snapid=73106 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
+* Boris bike "demo":http://tables.googlelabs.com/DataSource?snapid=78314 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
+* "Tests":http://github.com/tokumine/fusion-tables/tree/master/test/
 
 h2. Installation
 
