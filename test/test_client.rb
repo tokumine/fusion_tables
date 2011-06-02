@@ -10,12 +10,12 @@ class TestClient < Test::Unit::TestCase
     end
 
     should "be properly setup" do      
-      assert_equal @ft.clientlogin_service, "fusiontables"      
-      assert_equal @ft.headers["Content-Type"], "application/x-www-form-urlencoded"
+      assert_equal "fusiontables", @ft.clientlogin_service
+      assert_equal "application/x-www-form-urlencoded", @ft.headers["Content-Type"]
     end
     
     should "be able to authenticate with the google services" do
-      assert_equal @ft.auth_handler.service, "fusiontables"
+      assert_equal "fusiontables", @ft.auth_handler.service
       assert @ft.auth_handler.token
     end
   end
