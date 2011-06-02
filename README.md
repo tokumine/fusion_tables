@@ -24,7 +24,7 @@ gem install fusion_tables
 **Rubies**
 
 * 1.8.7
-* 1.9.2-p180
+* 1.9.2
 
 Usage 
 ------
