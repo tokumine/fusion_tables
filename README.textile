@@ -100,12 +100,14 @@ h2. Note on Patches/Pull Requests
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-h2. Copyright
+h2. History
 
 Largely based on Tom Verbeure's work for MTBGuru: http://code.google.com/p/mtbguru-fusiontables/
 
-Copyright (c) 2010 Tom Verbeure, Simon Tokumine. See LICENSE for details.
+h2. Contributors
 
-
-
+* tokumine
+* sikachu
+* troy
+* wynst
 
