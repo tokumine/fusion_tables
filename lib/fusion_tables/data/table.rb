@@ -85,8 +85,7 @@ module GData
           end
         end                
 
-        # Runs update on rows and return data obj
-        # No bulk update, so may aswell drop table and start again
+        # Runs update on row specified and return data obj
         def update row_id, data          
           data = encode([data]).first
           data = data.to_a.map{|x| x.join("=")}.join(", ")
