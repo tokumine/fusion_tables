@@ -18,12 +18,11 @@ class TestTable < Test::Unit::TestCase
                              :phone => 12, 
                              :dob => Time.utc(2010,"aug",10,20,15,1), 
                              :house => "POINT(1,1)"}]
-      
       row = data.first
-      assert_equal "'\\\\bob''s pizza'", row[:firstname]
-      assert_equal "#{12}",              row[:phone] 
-      assert_equal "'08-10-2010'",       row[:dob]
-      assert_equal "'POINT(1,1)'",       row[:house]
+      assert_equal "'\\\\bob''s pizza'",      row["'firstname'"]
+      assert_equal "#{12}",                   row["'phone'"] 
+      assert_equal "'08-10-2010 20:15:01'",   row["'dob'"]
+      assert_equal "'POINT(1,1)'",            row["'house'"]
     end
     
     should "be able to insert 1 row of data" do
@@ -33,7 +32,7 @@ class TestTable < Test::Unit::TestCase
                      :dob => Time.utc(2010,"aug",10,20,15,1), 
                      :house => '<Point><coordinates>-74.006393,40.714172,0</coordinates></Point>'}
              }
-
+    
       @table.insert data       
     end
         
@@ -47,8 +46,8 @@ class TestTable < Test::Unit::TestCase
       
       @table.insert data       
     end    
-
-
+    
+    
     should "be able to count the number of rows" do
        data = 2.times.inject([]) { |a,i|
                  a << {:firstname => "Person-#{i}", 
@@ -56,7 +55,7 @@ class TestTable < Test::Unit::TestCase
                        :dob => Time.utc(2010,"aug",10,20,15,1), 
                        :house => "<Point><coordinates>#{180-rand(360)},#{90-rand(180)},0</coordinates></Point>"}
                }
-
+    
         @table.insert data
         assert_equal 2, @table.count
     end
@@ -68,9 +67,9 @@ class TestTable < Test::Unit::TestCase
                        :dob => Time.utc(2010,"aug",10,20,15,1), 
                        :house => "<Point><coordinates>1,1,0</coordinates></Point>"}
                }
-
+    
         @table.insert data
-        assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}], @table.select
+        assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}], @table.select
     end
   end
 end

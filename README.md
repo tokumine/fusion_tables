@@ -108,13 +108,12 @@ Note on Patches/Pull Requests
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-History
---------
 
-Largely based on Tom Verbeure's [work for MTBGuru](http://code.google.com/p/mtbguru-fusiontables/)
 
 Contributors
 -------------
+
+Largely based on Tom Verbeure's [work for MTBGuru](http://code.google.com/p/mtbguru-fusiontables/)
 
 * tokumine
 * sikachu
