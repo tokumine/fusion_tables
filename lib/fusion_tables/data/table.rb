@@ -99,13 +99,12 @@ module GData
         #end
         
         # delete row
-        # no bulk delete so may aswell drop table and start again
         def delete row_id
           sql = "DELETE FROM #{@id} WHERE rowid='#{row_id}'"
           GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
         end
         
-        # Delete all the data from one table
+        # delete all rows
         def truncate!
           GData::Client::FusionTables::Data.parse(@client.sql_post("DELETE FROM #{@id}")).body
         end
