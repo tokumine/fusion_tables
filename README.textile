@@ -102,7 +102,7 @@ h2. Note on Patches/Pull Requests
 
 h2. History
 
-Largely based on Tom Verbeure's work for MTBGuru: http://code.google.com/p/mtbguru-fusiontables/
+Largely based on Tom Verbeure's "work for MTBGuru":http://code.google.com/p/mtbguru-fusiontables/
 
 h2. Contributors
 
