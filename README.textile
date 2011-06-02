@@ -1,39 +1,33 @@
 h1. fusion-tables
 
-This gem lets you easily interact with Google Fusion Tables from your Ruby application. Here is a "live visualisation of london bike hire availability":http://tables.googlelabs.com/DataSource?snapid=78314 and some "example maps and charts":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
+This gem lets you easily interact with Google Fusion Tables from your Ruby application. "Blog post":http://www.tokumine.com/2010/08/10/fusion-tables-gem/.
 
-h2. Gem Dependencies
+h2. Demo and API examples
 
-* gdata_19 >= 1.1.2
+Twitter "demo":http://tables.googlelabs.com/DataSource?snapid=73106 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
+Boris bike "demo":http://tables.googlelabs.com/DataSource?snapid=78314 / "code":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
+"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/
 
 h2. Installation
 
 bc. gem install fusion_tables
 
-h2. Rubies
+h4. Gem Dependencies
+
+* gdata_19 >= 1.1.2
+
+h4. Rubies
 
 Tested on:
 
 * 1.8.7
-* 1.9.2-p0
+* 1.9.2-p180
 
-h2. To Use
+h2. Usage 
 
-bc. require 'fusion_tables'
-
-or in Rails 2.3.x
-
-bc. config.gem 'fusion_tables'
-
-h2. API examples
- 
-"Twitter example":http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb
-"Boris bike example":http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb 
-"Tests":http://github.com/tokumine/fusion-tables/tree/master/test/
-
-Here is a brief rundown:
-
-<pre><code># Connect to service	
+<pre><code>require 'fusion_tables'
+	
+# Connect to service	
 @ft = GData::Client::FusionTables.new      
 @ft.clientlogin(username, password)
 
@@ -84,8 +78,7 @@ new_table.delete row_id
 
 Currently only single row UPDATE query is implemented.
 
-<pre><code>
-row_id = 1
+<pre><code>row_id = 1
 data = [{"friend name" 	=> "Eric Wimp", 
          "age"          => 25, 
          "meeting time" => Time.utc(2010,"aug",10,20,15,1),
@@ -93,50 +86,11 @@ data = [{"friend name" 	=> "Eric Wimp",
 new_table.update row_id, data	
 </code></pre>
 
-h2. Fusion Tables secret Geospatial Sauce
-
-*"Geolocated Tweets example":http://tables.googlelabs.com/DataSource?snapid=73106*
-
-Fusion Tables is a labs product from Google. You can "read more here":http://tables.googlelabs.com/, but the key thing is that it gives you *access to the google tile mill for fast generation of google map layers across large datasets* 
-
-Fusion Tables supports the following geometry types:
-
-* lat/long
-* addresses (automatically geocodes them for you)
-* KML (point, polyline, polygon, multipolygon)
-
-h2. Integrate with google maps v3
-
-Adding a fusion tables datalayer with many points/polygons to your v3 map is as simple as:
-
-bc. layer = new google.maps.FusionTablesLayer(139529);
-
-That's it
-
-You can also refine the tiles by SQL, and can even do so dynamically:
-
-<pre><code>
-layer = new google.maps.FusionTablesLayer(198945, {
-  query: "SELECT address FROM 198945 WHERE ridership > 5000"}
-);
-</code></pre>
-
-Finally, fusion tables also lets you make Heatmaps
-
-<pre><code>
-layer = new google.maps.FusionTablesLayer(136705, {
-  heatmap: true
-});
-</code></pre>
-
-You can also export your data (filtered and geocoded) to KML. As an example, here are "all the Gasoline filling stations in the UK":http://tables.googlelabs.com/exporttable?query=select+col0%2Ccol1%2Ccol2%2Ccol3%2Ccol4%2Ccol5%2Ccol6%2Ccol12%2Ccol13%2Ccol14%2Ccol15%2Ccol16%2Ccol17%2Ccol18%2Ccol19%2Ccol20%2Ccol21+from+214045+&o=kmllink&g=col0
-
-read "more here":http://code.google.com/apis/maps/documentation/javascript/overlays.html#FusionTables
 
 h2. Known Issues
 
-# The gem uses the Google gdata_19 gem which conflicts with the GData2 gem. Uninstall gdata2 to regain sanity.
-# Currently you have to make a table public before you can display it on a map, unfortunately, this can only be done on the web interface. A suggested workaround is to put all your data in 1 big public table, and then query for the data you want to display based off a key/flag column
+* The Google gdata_19 gem conflicts with the GData2 gem. Only current fix is to uninstall GData2.
+* You have to make a table public before you can display it on a map. This can only be done via FT web interface. 
 
 h2. Note on Patches/Pull Requests
  
