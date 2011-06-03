@@ -6,9 +6,9 @@ This gem lets you easily interact with [Google Fusion Tables](http://www.google.
 Demo and examples
 ------------------
 
-* Twitter [demo](http://tables.googlelabs.com/DataSource?snapid=73106) / [code](http://github.com/tokumine/fusion-tables/blob/master/examples/compare_tweets.rb)
-* Boris bike [demo](http://tables.googlelabs.com/DataSource?snapid=78314) / [code](http://github.com/tokumine/fusion-tables/blob/master/examples/boris_bikes.rb) 
-* [Tests](http://github.com/tokumine/fusion-tables/tree/master/test/)
+* Twitter [demo](http://tables.googlelabs.com/DataSource?snapid=73106) / [code](http://github.com/tokumine/fusion_tables/blob/master/examples/compare_tweets.rb)
+* Boris bike [demo](http://tables.googlelabs.com/DataSource?snapid=78314) / [code](http://github.com/tokumine/fusion_tables/blob/master/examples/boris_bikes.rb) 
+* [Tests](http://github.com/tokumine/fusion_tables/tree/master/test/)
 
 Installation
 -------------
