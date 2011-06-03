@@ -1,6 +1,12 @@
-== 0.2.3
+== 0.2.3 (03/06/11)
 
-* 
+* all tests pass
+* readme simplified
+* count now returns 0 for empty tables
+* truncate table, or delete all rows (sikachu)
+* fix up the single update row method (sikachu)
+* if value is nil, insert empty string (wynst)
+* fixes to exception handling and tests (troy)
 
 == 0.2.2
 

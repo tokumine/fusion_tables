@@ -71,5 +71,21 @@ class TestTable < Test::Unit::TestCase
         @table.insert data
         assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}], @table.select
     end
+        
+    should "be able to truncate all rows and start again" do
+       data = 2.times.inject([]) { |a,i|
+                 a << {:firstname => "Person-#{i}", 
+                       :phone => 12, 
+                       :dob => Time.utc(2010,"aug",10,20,15,1), 
+                       :house => "<Point><coordinates>#{180-rand(360)},#{90-rand(180)},0</coordinates></Point>"}
+               }
+    
+        @table.insert data
+        assert_equal 2, @table.count
+        @table.truncate!
+        assert_equal 0, @table.count
+        @table.insert data        
+        assert_equal 2, @table.count
+    end    
   end
 end

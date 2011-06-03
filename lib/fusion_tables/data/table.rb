@@ -52,8 +52,10 @@ module GData
         
         # Returns a count of rows. SQL conditions optional
         #
+        # Note: handles odd FT response: when table has 0 rows, returns empty array.
         def count conditions=nil
-          select("count()", conditions).first.values.first.to_i
+          result = select("count()", conditions)
+          result.empty? ? 0 : result.first[:"count()"].to_i          
         end
         
         
