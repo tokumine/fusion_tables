@@ -12,6 +12,7 @@ begin
     gem.authors = ["Simon Tokumine", "Tom Verbeure"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_dependency "gdata_19", ">= 1.1.2"
+    gem.files.exclude 'pkg'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
