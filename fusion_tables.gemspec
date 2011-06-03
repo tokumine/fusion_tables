@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fusion_tables}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon Tokumine", "Tom Verbeure"]
@@ -42,7 +42,7 @@ Gem::Specification.new do |s|
      "test/test_ext.rb",
      "test/test_table.rb"
   ]
-  s.homepage = %q{http://github.com/tokumine/fusion-tables}
+  s.homepage = %q{http://github.com/tokumine/fusion_tables}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.4.1}
