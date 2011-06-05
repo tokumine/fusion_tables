@@ -30,11 +30,10 @@ module GData
           @name = options[:name]
         end
 
-
         # Sets up data types from google
         #
         def describe
-          GData::Client::FusionTables::Data.parse(@client.sql_get("DESCRIBE #{@id}")).body
+          @client.execute "DESCRIBE #{@id}"
         end
                 
         # Runs select and returns data obj
@@ -46,8 +45,7 @@ module GData
         # use columns=ROWID to select row ids
         #
         def select columns="*", conditions=nil
-          sql = "SELECT #{columns} FROM #{@id} #{conditions}"
-          GData::Client::FusionTables::Data.parse(@client.sql_get(sql)).body
+          @client.execute "SELECT #{columns} FROM #{@id} #{conditions}"
         end
         
         # Returns a count of rows. SQL conditions optional
@@ -92,19 +90,17 @@ module GData
         def update row_id, data          
           data = encode([data]).first
           data = data.to_a.map{|x| x.join("=")}.join(", ")
-          sql = "UPDATE #{@id} SET #{data} WHERE ROWID = '#{row_id}'"
-          GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
+          @client.execute "UPDATE #{@id} SET #{data} WHERE ROWID = '#{row_id}'"
         end
         
         # delete row
         def delete row_id
-          sql = "DELETE FROM #{@id} WHERE rowid='#{row_id}'"
-          GData::Client::FusionTables::Data.parse(@client.sql_post(sql)).body
+          @client.execute "DELETE FROM #{@id} WHERE rowid='#{row_id}'"
         end
         
         # delete all rows
         def truncate!
-          GData::Client::FusionTables::Data.parse(@client.sql_post("DELETE FROM #{@id}")).body
+          @client.execute "DELETE FROM #{@id}"
         end
         
         def get_headers
@@ -130,7 +126,7 @@ module GData
             ar      
           end
         end  
-                
+                        
         # 
         # Returns datatype of given column name
         #

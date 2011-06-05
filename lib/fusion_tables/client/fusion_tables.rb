@@ -20,28 +20,27 @@ module GData
       DATATYPES  = %w(number string location datetime)
       
       def initialize(options = {})
-          options[:clientlogin_service] ||= 'fusiontables'
-          options[:headers] = { 'Content-Type' => 'application/x-www-form-urlencoded' }
-          super(options)
+        options[:clientlogin_service] ||= 'fusiontables'
+        options[:headers] = { 'Content-Type' => 'application/x-www-form-urlencoded' }
+        super(options)
       end
 
       def sql_encode(sql)
-          "sql=" + CGI::escape(sql)
+        "sql=" + CGI::escape(sql)
       end
 
       def sql_get(sql)
-          resp = self.get(SERVICE_URL + "?" + sql_encode(sql))
+        resp = self.get(SERVICE_URL + "?" + sql_encode(sql))
       end
 
       def sql_post(sql)
-          resp = self.post(SERVICE_URL, sql_encode(sql))
+        resp = self.post(SERVICE_URL, sql_encode(sql))
       end
 
       def sql_put(sql)
-          resp = self.put(SERVICE_URL, sql_encode(sql))
+        resp = self.put(SERVICE_URL, sql_encode(sql))
       end
-         
-      
+                  
       # Overrides auth_handler= so if the authentication changes,
       # the session cookie is cleared.
       def auth_handler=(handler)

@@ -1,14 +1,16 @@
 fusion-tables
 ==============
 
-This gem lets you easily interact with [Google Fusion Tables](http://www.google.com/fusiontables/Home) from your Ruby application. Read more in this [Blog post](http://www.tokumine.com/2010/08/10/fusion-tables-gem/).
+This gem lets you easily interact with [Google Fusion Tables](http://www.google.com/fusiontables/Home) from your Ruby application. There is a plain SQL interface, or an object orientated interface available. 
 
 Demo and examples
 ------------------
 
-* Twitter [demo](http://tables.googlelabs.com/DataSource?snapid=73106) / [code](http://github.com/tokumine/fusion_tables/blob/master/examples/compare_tweets.rb)
+* Twitter [demo](http://tables.googlelabs.com/DataSource?snapid=73106) / [code](http://github.com/tokumine/fusion_tables/blob/master/examples/compare_tweets.rb) /
+[blog](http://www.tokumine.com/2010/08/10/fusion-tables-gem/)
 * Boris bike [demo](http://tables.googlelabs.com/DataSource?snapid=78314) / [code](http://github.com/tokumine/fusion_tables/blob/master/examples/boris_bikes.rb) 
 * [Tests](http://github.com/tokumine/fusion_tables/tree/master/test/)
+
 
 Installation
 -------------
@@ -35,6 +37,15 @@ require 'fusion_tables'
 @ft = GData::Client::FusionTables.new      
 @ft.clientlogin(username, password)
 
+
+# 1. Simple SQL interface
+# =========================
+@ft.execute "INSERT INTO #{my_table_id} (name, geo) VALUES ('tokyo', '35.6894 139.6917');"
+@ft.execute "SELECT count() FROM #{my_table_id};"
+
+
+# 2. basic ORM interface
+# ========================
 # Browse existing tables
 @ft.show_tables
  # => [table_1, table_2] 

@@ -15,16 +15,22 @@
 module GData
   module Client
     class FusionTables < Base    
+                     
+      # Helper method to run FT SQL and return FT data object
+      def execute(sql)        
+        http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
+        GData::Client::FusionTables::Data.parse(self.send(http_req, sql)).body                    
+      end                                                   
                           
       # Show a list of fusion tables
       def show_tables 
-        data = GData::Client::FusionTables::Data.parse(self.sql_get("SHOW TABLES"))
+        data = self.execute "SHOW TABLES"
+        
         data.inject([]) do |x, row|
           x << GData::Client::FusionTables::Table.new(self, row)        
           x
         end  
       end
-
             
       # Create a new table. Return the corresponding table
       # 
