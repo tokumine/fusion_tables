@@ -1,4 +1,4 @@
-fusion-tables
+fusion_tables
 ==============
 
 This gem lets you easily interact with [Google Fusion Tables](http://www.google.com/fusiontables/Home) from your Ruby application. There is a plain SQL interface, or an object orientated interface available. 
