@@ -33,6 +33,7 @@ Usage
 ``` ruby
 require 'fusion_tables'
 	
+	
 # Connect to service	
 @ft = GData::Client::FusionTables.new      
 @ft.clientlogin(username, password)
@@ -88,20 +89,16 @@ data = [{"friend name" 	=> "Eric Wimp",
          "where"        => "29 Acacia Road, Nuttytown"}]
 new_table.insert data
 
+# Currently FT API only supports single row UPDATE.
+new_table.update 1, [{"friend name" 	=> "Bananaman"}]
+
 # Delete row
-new_table.delete row_id
+new_table.delete 1
+
+# Delete all rows
+new_table.truncate!
 ```
 
-Currently only single row UPDATE query is implemented.
-
-``` ruby
-row_id = 1
-data = [{"friend name" 	=> "Eric Wimp", 
-         "age"          => 25, 
-         "meeting time" => Time.utc(2010,"aug",10,20,15,1),
-         "where"        => "29 Acacia Road, Nuttytown"}]
-new_table.update row_id, data	
-```
 
 Known Issues
 -------------
