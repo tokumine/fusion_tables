@@ -90,7 +90,7 @@ data = [{"friend name" 	=> "Eric Wimp",
 new_table.insert data
 
 # Currently FT API only supports single row UPDATE.
-new_table.update 1, [{"friend name" 	=> "Bananaman"}]
+new_table.update 1, [{"friend name"	=> "Bananaman"}]
 
 # Delete row
 new_table.delete 1
