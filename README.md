@@ -40,6 +40,7 @@ require 'fusion_tables'
 
 # 1. Simple SQL interface
 # =========================
+@ft.execute "SHOW TABLES" 
 @ft.execute "INSERT INTO #{my_table_id} (name, geo) VALUES ('tokyo', '35.6894 139.6917');"
 @ft.execute "SELECT count() FROM #{my_table_id};"
 
