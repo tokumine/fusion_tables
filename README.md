@@ -39,14 +39,14 @@ require 'fusion_tables'
 @ft.clientlogin(username, password)
 
 
-# 1. Simple SQL interface
+# 1. SQL interface
 # =========================
 @ft.execute "SHOW TABLES" 
 @ft.execute "INSERT INTO #{my_table_id} (name, geo) VALUES ('tokyo', '35.6894 139.6917');"
 @ft.execute "SELECT count() FROM #{my_table_id};"
 
 
-# 2. basic ORM interface
+# 2. ORM interface
 # ========================
 # Browse existing tables
 @ft.show_tables
