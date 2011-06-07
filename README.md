@@ -1,7 +1,10 @@
 fusion_tables
 ==============
+<iframe style="float:right;" width="280px" height="150px" scrolling="no"  src="http://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4%2C+col5%2C+col6%2C+col7%2C+col8%2C+col9%2C+col10%2C+col11%2C+col12%2C+col13+from+245192+&h=false&lat=51.509383501611595&lng=-0.13586997985839844&z=12&t=4&l=col11"></iframe>
 
-This gem lets you easily interact with [Google Fusion Tables](http://www.google.com/fusiontables/Home) from your Ruby application. There is a plain SQL interface, or an object orientated interface available. 
+This gem lets you easily interact with [Google Fusion Tables API](http://www.google.com/fusiontables/Home) from your Ruby application via a plain SQL interface, or an object orientated interface.
+
+ 
 
 Demo and examples
 ------------------
