@@ -17,6 +17,7 @@ tmtags
 coverage
 rdoc
 examples/credentials.yml
+pkg/*
 
 ## PROJECT::TEST
 test/test_config.yml
