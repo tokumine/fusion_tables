@@ -16,7 +16,7 @@ module GData
   module Client
     class FusionTables < Base
 
-      SERVICE_URL = "http://tables.googlelabs.com/api/query"
+      SERVICE_URL = "https://tables.googlelabs.com/api/query"
       DATATYPES  = %w(number string location datetime)
       
       def initialize(options = {})
