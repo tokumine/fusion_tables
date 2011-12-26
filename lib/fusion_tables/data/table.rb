@@ -116,7 +116,7 @@ module GData
                 ret["'#{key.to_s}'"] = "''"
               else
                 ret["'#{key.to_s}'"] = case get_datatype(key)
-                  when "number"   then  "#{value}"
+                  when "number", "location"   then  "#{value}"
                   when "datetime" then  "'#{value.strftime("%m-%d-%Y %H:%M:%S")}'"
                   else                  "'#{value.gsub(/\\/, '\&\&').gsub(/'/, "''")}'"                            
                 end
