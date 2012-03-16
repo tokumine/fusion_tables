@@ -50,6 +50,9 @@ module GData
 
         # ensure all column types are valid
         columns.each do |col|
+          col[:name] = col[:name].to_s
+          col[:type] = col[:type].to_s
+
           if !DATATYPES.include? col[:type].downcase
             raise ArgumentError, "Ensure input types are: 'number', 'string', 'location' or 'datetime'"
           end
