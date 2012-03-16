@@ -133,3 +133,4 @@ Largely based on Tom Verbeure's [work for MTBGuru](http://code.google.com/p/mtbg
 * wynst
 * sdball
 * jmannau
+* tomykaira
