@@ -12,6 +12,10 @@ class TestTable < Test::Unit::TestCase
                                          {:name  => 'dob',        :type => 'datetime'},
                                          {:name  => 'house',      :type => 'location'}]
     end
+
+    teardown do
+      @ft.drop(@table.id)
+    end
     
     should "be able to SHOW TABLES" do
       ret = @ft.execute "SHOW TABLES"      
