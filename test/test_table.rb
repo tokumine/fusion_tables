@@ -12,6 +12,10 @@ class TestTable < Test::Unit::TestCase
                                          {:name  => 'dob',        :type => 'datetime'},
                                          {:name  => 'house',      :type => 'location'}]
     end
+
+    teardown do
+      @ft.drop(@table.id)
+    end
    
     should "format data and prep for upload" do
       data = @table.encode [{:firstname => "\\bob's piz\za", 
