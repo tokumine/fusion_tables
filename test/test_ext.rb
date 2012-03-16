@@ -51,7 +51,9 @@ class TestExt < Test::Unit::TestCase
     end
        
     should "return zero if passed a silly id" do
-      assert_equal 0, @ft.drop(235243875629384756)
+      assert_raise GData::Client::BadRequestError do
+        assert_equal 0, @ft.drop(235243875629384756)
+      end
     end    
   end
 
