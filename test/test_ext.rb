@@ -30,8 +30,9 @@ class TestExt < Test::Unit::TestCase
     end
 
     should "return you a list of your fusion tables" do
+      @table = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
       resp = @ft.show_tables
-      assert_equal GData::Client::FusionTables::Table, resp.first.class if resp.first
+      assert resp.any? { |t| t.name == 'test_table' }
     end
 
     should "be possible to delete a table with an id" do
