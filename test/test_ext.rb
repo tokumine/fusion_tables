@@ -9,6 +9,9 @@ class TestExt < Test::Unit::TestCase
       @ft.clientlogin(username, password)
     end
 
+    teardown do
+      @ft.drop(@table.id) if @table and @table.id
+    end
 
     should "raise ArgumentError if supply unknown types to it" do
       assert_raise ArgumentError do
@@ -17,15 +20,13 @@ class TestExt < Test::Unit::TestCase
     end
 
     should "let you create a table if you get everything right" do
-      table = @ft.create_table "test_table", [{:name => "test_col", :type => "string" }]
-      assert_equal GData::Client::FusionTables::Table, table.class
-      @ft.drop(table.id)
+      @table = @ft.create_table "test_table", [{:name => "test_col", :type => "string" }]
+      assert_equal GData::Client::FusionTables::Table, @table.class
     end
 
     should "correct your table name to a certain degree on create" do
-      table = @ft.create_table "test table", [{:name => "test col", :type => "string" }]
-      assert_equal "test_table", table.name
-      @ft.drop(table.id)
+      @table = @ft.create_table "test table", [{:name => "test col", :type => "string" }]
+      assert_equal "test_table", @table.name
     end
 
     should "return you a list of your fusion tables" do
