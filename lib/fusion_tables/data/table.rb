@@ -111,21 +111,12 @@ module GData
           data.inject([]) do |ar,h|
             ret = {}
             h.each do |key, value|              
-              if value.nil?
-                #empty string for nils
-                ret["'#{key.to_s}'"] = "''"
-              else
-                ret["'#{key.to_s}'"] = case get_datatype(key)
-                  when "number"   then  "#{value}"
-                  when "datetime" then  "'#{value.strftime("%m-%d-%Y %H:%M:%S")}'"
-                  else                  "'#{value.gsub(/\\/, '\&\&').gsub(/'/, "''")}'"                            
-                end
-              end
+              ret["'#{key}'"] = encode_value(get_datatype(key), value)
             end
             ar << ret
             ar      
           end
-        end  
+        end
                         
         # 
         # Returns datatype of given column name
@@ -138,6 +129,42 @@ module GData
           end            
           raise ArgumentError, "The column doesn't exist"
         end      
+
+        private
+        def encode_value_as_numeric(value)
+          value.to_s
+        end
+
+        def encode_value_as_datetime(value)
+          encode_value_as_string(value.strftime("%m-%d-%Y %H:%M:%S"))
+        end
+
+        def encode_value_as_string(value)
+          quoted = value.to_s.gsub(/\\/, '\&\&').gsub(/'/, "''")
+          "'#{quoted}'"
+        end
+
+        def encode_value type, value
+          if value.nil?
+            #empty string for nils
+            "''"
+          else
+            case type
+            when "number"
+              encode_value_as_numeric(value)
+            when "datetime"
+              encode_value_as_datetime(value)
+            when "location"
+              if value.is_a?(Numeric)
+                encode_value_as_numeric(value)
+              else
+                encode_value_as_string(value)
+              end
+            else
+              encode_value_as_string(value)
+            end
+          end
+        end
       end
     end
   end

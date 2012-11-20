@@ -132,3 +132,5 @@ Largely based on Tom Verbeure's [work for MTBGuru](http://code.google.com/p/mtbg
 * troy
 * wynst
 * sdball
+* jmannau
+* tomykaira
