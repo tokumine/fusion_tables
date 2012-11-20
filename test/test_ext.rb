@@ -22,6 +22,7 @@ class TestExt < Test::Unit::TestCase
     should "let you create a table if you get everything right" do
       @table = @ft.create_table "test_table", [{:name => "test_col", :type => "string" }]
       assert_equal GData::Client::FusionTables::Table, @table.class
+      assert @table.id.is_a? String
     end
 
     should "accept symbol for name and type" do
