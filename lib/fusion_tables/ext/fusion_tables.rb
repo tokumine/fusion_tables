@@ -67,7 +67,7 @@ module GData
         raise "unknown column type" if resp.body == "Unknown column type."
 
         # construct table object and return
-        table_id = resp.body.split("\n")[1].chomp.to_i
+        table_id = resp.body.split("\n")[1].chomp
         table = GData::Client::FusionTables::Table.new(self, :table_id => table_id, :name => table_name)
         table.get_headers
         table
