@@ -7,6 +7,7 @@ class TestExt < Test::Unit::TestCase
       init_config
       @ft = GData::Client::FusionTables.new
       @ft.clientlogin(username, password)
+      @ft.set_api_key(api_key)
     end
 
     teardown do

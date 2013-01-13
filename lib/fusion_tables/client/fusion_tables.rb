@@ -27,21 +27,20 @@ module GData
       end
 
       def sql_encode(sql)
-        puts sql
+        # puts sql
         "sql=" + CGI::escape(sql)
       end
 
       def sql_get(sql)
-        #manually adding the key for testing
-        resp = self.get(SERVICE_URL + "?" + sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        resp = self.get(SERVICE_URL + "?" + sql_encode(sql) + "&key=#{@api_key}")
       end
 
       def sql_post(sql)
-        resp = self.post(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        resp = self.post(SERVICE_URL, sql_encode(sql) + "&key=#{@api_key}")
       end
 
       def sql_put(sql)
-        resp = self.put(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        resp = self.put(SERVICE_URL, sql_encode(sql) + "&key=#{@api_key}")
       end
                   
       # Overrides auth_handler= so if the authentication changes,

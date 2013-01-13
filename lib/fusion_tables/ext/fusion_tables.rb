@@ -32,9 +32,13 @@ module GData
           end
           correlated << h
         end
-        puts correlated.inspect
+        # puts correlated.inspect
 
         correlated
+      end
+
+      def set_api_key(api_key)
+        @api_key = api_key
       end
 
       # Show a list of fusion tables
