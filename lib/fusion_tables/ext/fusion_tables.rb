@@ -28,8 +28,13 @@ module GData
       def show_tables
         data = self.execute "SHOW TABLES"
 
-        data.inject([]) do |x, row|
-          x << GData::Client::FusionTables::Table.new(self, row)
+        data['rows'].inject([]) do |x, row|
+          table = {}
+          table[:table_id] = row[0]
+          table[:name] = row[1]
+
+          puts "table: #{table.inspect}"
+          x << GData::Client::FusionTables::Table.new(self, table)
           x
         end
       end
@@ -99,7 +104,7 @@ module GData
         delete_count = 0
         ids.each do |id|
           resp = self.sql_post("DROP TABLE #{id}")
-          delete_count += 1 if resp.body.strip.downcase == 'ok'
+          delete_count += 1 if resp.status_code == 200
         end
         delete_count
       end
