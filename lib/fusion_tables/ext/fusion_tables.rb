@@ -19,22 +19,30 @@ module GData
       # Helper method to run FT SQL and return FT data object
       def execute(sql)
         http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
-        json_body = JSON.parse(self.send(http_req, sql).body)
-        puts json_body
-        json_body
+        json_resp = JSON.parse(self.send(http_req, sql).body)
+        
+        # probably a much cleaner way to do this
+        rows = json_resp['rows']
+        columns = json_resp['columns']
+        correlated = []
+        (0...rows.length).each do|row|
+          h = {}
+          (0...columns.length).each do|column|
+            h[columns[column].gsub(/\s+/, "_").downcase.to_sym] = rows[row][column]
+          end
+          correlated << h
+        end
+        puts correlated.inspect
+
+        correlated
       end
 
       # Show a list of fusion tables
       def show_tables
         data = self.execute "SHOW TABLES"
 
-        data['rows'].inject([]) do |x, row|
-          table = {}
-          table[:table_id] = row[0]
-          table[:name] = row[1]
-
-          puts "table: #{table.inspect}"
-          x << GData::Client::FusionTables::Table.new(self, table)
+        data.inject([]) do |x, row|
+          x << GData::Client::FusionTables::Table.new(self, row)
           x
         end
       end
