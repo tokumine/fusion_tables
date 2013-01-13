@@ -16,29 +16,38 @@ module GData
   module Client
     class FusionTables < Base
 
-      SERVICE_URL = "https://tables.googlelabs.com/api/query"
+      #SERVICE_URL = "https://www.google.com/fusiontables/api/query"
+      SERVICE_URL = "https://www.googleapis.com/fusiontables/v1/query"
       DATATYPES  = %w(number string location datetime)
       
       def initialize(options = {})
         options[:clientlogin_service] ||= 'fusiontables'
-        options[:headers] = { 'Content-Type' => 'application/x-www-form-urlencoded' }
+        options[:headers] = { 'Content-Type' => 'application/x-www-form-urlencoded'}
         super(options)
       end
 
       def sql_encode(sql)
+        puts sql
         "sql=" + CGI::escape(sql)
       end
 
       def sql_get(sql)
-        resp = self.get(SERVICE_URL + "?" + sql_encode(sql))
+        #manually adding the key for testing
+        resp = self.get(SERVICE_URL + "?" + sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        puts resp.inspect
+        resp
       end
 
       def sql_post(sql)
-        resp = self.post(SERVICE_URL, sql_encode(sql))
+        resp = self.post(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        puts resp.inspect
+        resp
       end
 
       def sql_put(sql)
-        resp = self.put(SERVICE_URL, sql_encode(sql))
+        resp = self.put(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
+        puts resp.inspect
+        resp
       end
                   
       # Overrides auth_handler= so if the authentication changes,

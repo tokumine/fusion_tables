@@ -19,7 +19,7 @@ module GData
       # Helper method to run FT SQL and return FT data object
       def execute(sql)
         http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
-        GData::Client::FusionTables::Data.parse(self.send(http_req, sql)).body
+        JSON.parse(GData::Client::FusionTables::Data.parse(self.send(http_req, sql)).body)
       end
 
       # Show a list of fusion tables
@@ -67,7 +67,8 @@ module GData
         raise "unknown column type" if resp.body == "Unknown column type."
 
         # construct table object and return
-        table_id = resp.body.split("\n")[1].chomp
+        json_resp = JSON.parse(resp.body)
+        table_id = json_resp['rows'][0][0]
         table = GData::Client::FusionTables::Table.new(self, :table_id => table_id, :name => table_name)
         table.get_headers
         table
