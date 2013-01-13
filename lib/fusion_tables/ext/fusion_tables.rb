@@ -19,7 +19,9 @@ module GData
       # Helper method to run FT SQL and return FT data object
       def execute(sql)
         http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
-        JSON.parse(GData::Client::FusionTables::Data.parse(self.send(http_req, sql)).body)
+        json_body = JSON.parse(self.send(http_req, sql).body)
+        puts json_body
+        json_body
       end
 
       # Show a list of fusion tables

@@ -34,20 +34,14 @@ module GData
       def sql_get(sql)
         #manually adding the key for testing
         resp = self.get(SERVICE_URL + "?" + sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
-        puts resp.inspect
-        resp
       end
 
       def sql_post(sql)
         resp = self.post(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
-        puts resp.inspect
-        resp
       end
 
       def sql_put(sql)
         resp = self.put(SERVICE_URL, sql_encode(sql) + '&key=AIzaSyAcsnDc7_YZskPj4ep3jT_fkpB3HI_1a98')
-        puts resp.inspect
-        resp
       end
                   
       # Overrides auth_handler= so if the authentication changes,

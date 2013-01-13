@@ -27,10 +27,9 @@ class TestExt < Test::Unit::TestCase
 
     should "accept symbol for name and type" do
       @table = @ft.create_table "test_table", [{:name => :test_col, :type => :string }]
-      puts 'describe table ' + @table.describe
-      first_column = @table.describe[0]
-      assert_equal 'test_col', first_column[:name]
-      assert_equal 'string', first_column[:type]
+      first_column = @table.describe['rows'][0]
+      assert_equal 'test_col', first_column[1]
+      assert_equal 'string', first_column[2]
     end
 
     should "correct your table name to a certain degree on create" do
