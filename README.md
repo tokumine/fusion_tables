@@ -10,7 +10,7 @@ Thanks to DerekEder's work, v0.4 supports the new Fusion Tables JSON API rather 
 
 1. Geometry is returned as GeoJSON rather than KML.
 2. Null values are returned as empty strings (the FT API does this, so we're a bit stuck here).
-3. You now need to supply an api_key to connect to use the service. You can get an API key from your Google API console. 
+3. You need to supply an api_key to use the service. You can get an API key from your Google API console. 
 
 See the example below and tests for more.
 
