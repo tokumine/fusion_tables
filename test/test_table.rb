@@ -74,7 +74,7 @@ class TestTable < Test::Unit::TestCase
                }
     
         @table.insert data
-        assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>"<Point><coordinates>1,1,0</coordinates></Point>"}], @table.select
+        assert_equal [{:firstname=>"Person-0", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>{"geometry"=>{"type"=>"Point", "coordinates"=>[1.0, 1.0, 0.0]}}}, {:firstname=>"Person-1", :phone=>"12", :dob=>"08-10-2010 20:15:01", :house=>{"geometry"=>{"type"=>"Point", "coordinates"=>[1.0, 1.0, 0.0]}}}], @table.select
     end
         
     should "be able to truncate all rows and start again" do

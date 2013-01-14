@@ -70,13 +70,13 @@ class TestTable < Test::Unit::TestCase
     # should "be able to query geographic data" do
     #   @table = @ft.create_table "test", [{:name  => 'name',      :type => 'string'},
     #                                      {:name  => 'geo',       :type => 'location'}]
-    #       
+          
     #   @ft.execute "INSERT INTO #{@table.id} (name, geo) VALUES ('tokyo',   '35.6894 139.6917');
     #                INSERT INTO #{@table.id} (name, geo) VALUES ('osaka',   '34.6937 135.5021');
     #                INSERT INTO #{@table.id} (name, geo) VALUES ('fukuoka', '33.5903 130.4017');
     #                INSERT INTO #{@table.id} (name, geo) VALUES ('kyoto',   '35.0116 135.7680');
     #                INSERT INTO #{@table.id} (name, geo) VALUES ('nagoya',  '35.1814 136.9063');"
-    #   
+      
     #   # get cities nearest to Nara
     #   res = @ft.execute "SELECT * FROM #{@table.id} ORDER BY ST_DISTANCE(geo, LATLNG(35.6894,139.6917)) LIMIT 10"
     #   puts res.inspect
