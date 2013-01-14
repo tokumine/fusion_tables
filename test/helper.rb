@@ -31,4 +31,8 @@ class Test::Unit::TestCase
   def table_name
     @config_file['table_name']
   end  
+
+  def api_key
+    @config_file['api_key']
+  end 
 end

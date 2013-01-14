@@ -7,6 +7,7 @@ class TestExt < Test::Unit::TestCase
       init_config
       @ft = GData::Client::FusionTables.new
       @ft.clientlogin(username, password)
+      @ft.set_api_key(api_key)
     end
 
     teardown do
@@ -27,7 +28,7 @@ class TestExt < Test::Unit::TestCase
 
     should "accept symbol for name and type" do
       @table = @ft.create_table "test_table", [{:name => :test_col, :type => :string }]
-      first_column = @table.describe[0]
+      first_column = @table.describe.first
       assert_equal 'test_col', first_column[:name]
       assert_equal 'string', first_column[:type]
     end
