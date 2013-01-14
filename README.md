@@ -4,7 +4,10 @@ fusion_tables
 
 This gem lets you easily interact with [Google Fusion Tables API](http://www.google.com/fusiontables/Home) from your Ruby application via a plain SQL interface, or an object orientated interface.
 
- 
+v0.4 updates
+------------
+Note that v0.4 onwards of this gem returns geometry as GeoJSON rather than KML by default. 
+
 
 Demo and examples
 ------------------
@@ -39,7 +42,8 @@ require 'fusion_tables'
 	
 # Connect to service	
 @ft = GData::Client::FusionTables.new      
-@ft.clientlogin(username, password)
+@ft.clientlogin(username, password) 
+@ft.set_api_key(api_key) # obtained from the google api console
 
 
 # 1. SQL interface
@@ -109,6 +113,7 @@ Known Issues
 * The Google gdata_19 gem conflicts with the GData2 gem. Only current fix is to uninstall GData2.
 * You have to make a table public before you can display it on a map. This can only be done via FT web interface. 
 
+
 Note on Patches/Pull Requests
 ------------------------------
  
@@ -118,7 +123,7 @@ Note on Patches/Pull Requests
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+* Send me a pull request. 
 
 
 
@@ -135,3 +140,4 @@ Largely based on Tom Verbeure's [work for MTBGuru](http://code.google.com/p/mtbg
 * jmannau
 * tomykaira
 * fallanic
+* derekeder
