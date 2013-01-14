@@ -4,10 +4,15 @@ fusion_tables
 
 This gem lets you easily interact with [Google Fusion Tables API](http://www.google.com/fusiontables/Home) from your Ruby application via a plain SQL interface, or an object orientated interface.
 
-v0.4 updates
-------------
-Note that v0.4 onwards of this gem returns geometry as GeoJSON rather than KML by default. 
+upgrading to current (0.4)
+--------------------------
+Thanks to DerekEder's work, 0.4 support the new Fusion Tables JSON API rather than the now defunct CSV API. This has introduced some small (but possibly breaking) changes:
 
+1. Geometry is returned as GeoJSON rather than KML.
+2. Null values are returned as empty strings (the FT API does this, so we're a bit stuck here).
+3. You now need to supply an api_key to connect to use the service. You can get an API key from your Google API console. 
+
+See the example below and tests for more.
 
 Demo and examples
 ------------------
