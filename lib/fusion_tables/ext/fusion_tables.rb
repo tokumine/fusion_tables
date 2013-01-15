@@ -21,9 +21,10 @@ module GData
         http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
         json_resp = JSON.parse(self.send(http_req, sql).body)
         
-        # probably a much cleaner way to do this
-        puts json_resp.inspect
-        
+        if json_resp['rows'].nil?
+          return []
+        end
+
         rows = json_resp['rows']
         columns = json_resp['columns']
         correlated = []

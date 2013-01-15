@@ -27,19 +27,21 @@ module GData
       end
 
       def sql_encode(sql)
-        # puts sql
         "sql=" + CGI::escape(sql)
       end
 
       def sql_get(sql)
+        raise ArgumentError, "need api key" if @api_key.nil?
         resp = self.get(SERVICE_URL + "?" + sql_encode(sql) + "&key=#{@api_key}")
       end
 
       def sql_post(sql)
+        raise ArgumentError, "need api key" if @api_key.nil?
         resp = self.post(SERVICE_URL, sql_encode(sql) + "&key=#{@api_key}")
       end
 
       def sql_put(sql)
+        raise ArgumentError, "need api key" if @api_key.nil?
         resp = self.put(SERVICE_URL, sql_encode(sql) + "&key=#{@api_key}")
       end
                   
