@@ -18,5 +18,12 @@ class TestClient < Test::Unit::TestCase
       assert_equal "fusiontables", @ft.auth_handler.service
       assert @ft.auth_handler.token
     end
+
+    should "raise ArgumentError if no api key supplied" do
+      @ft.set_api_key(nil)
+      assert_raise ArgumentError do
+        @ft.sql_get "SHOW TABLES" 
+      end
+    end
   end
 end

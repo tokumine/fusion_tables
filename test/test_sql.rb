@@ -66,6 +66,11 @@ class TestTable < Test::Unit::TestCase
       
       assert_equal 1, ret.first[:"count()"].to_i  
     end    
+
+    should "return empty array if no results found" do 
+      ret = @ft.execute "SELECT * FROM #{@table.id} WHERE firstname = 0;"
+      assert_equal [], ret
+    end
     
     # should "be able to query geographic data" do
     #   @table = @ft.create_table "test", [{:name  => 'name',      :type => 'string'},
