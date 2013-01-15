@@ -22,6 +22,8 @@ module GData
         json_resp = JSON.parse(self.send(http_req, sql).body)
         
         # probably a much cleaner way to do this
+        puts json_resp.inspect
+        
         rows = json_resp['rows']
         columns = json_resp['columns']
         correlated = []
