@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fusion_tables"
-  s.version = "0.4.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon Tokumine", "Tom Verbeure"]
-  s.date = "2013-01-14"
+  s.date = "2013-01-17"
   s.description = "A simple Google Fusion Tables API wrapper. Supports bulk inserts and most API functions"
   s.email = "simon@tinypla.net"
   s.extra_rdoc_files = [
