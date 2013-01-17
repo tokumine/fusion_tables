@@ -4,7 +4,7 @@ fusion_tables
 
 This gem lets you easily interact with [Google Fusion Tables API](http://www.google.com/fusiontables/Home) from your Ruby application via a plain SQL interface, or an object orientated interface.
 
-upgrading to current (v0.4)
+upgrading to current (v0.4.x)
 --------------------------
 Thanks to DerekEder's work, v0.4 supports the new Fusion Tables JSON API rather than the now defunct CSV API. This has introduced some small (but possibly breaking) changes:
 
