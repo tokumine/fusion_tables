@@ -38,6 +38,16 @@ class TestExt < Test::Unit::TestCase
       assert_equal "test_table", @table.name
     end
 
+    should "correct column names to a certain degree on create" do
+      table_name = "test_table"
+      column_name = "test'col"
+      @ft.create_table table_name, [{:name => column_name, :type => "string" }]
+      @table = @ft.show_tables.select{|t| t.name == table_name}.first
+      column_info = @table.describe
+      column_with_right_name = column_info.select{|c| c[:name] == column_name }.first
+      assert_equal column_name, column_with_right_name[:name]
+    end
+
     should "return you a list of your fusion tables" do
       @table = @ft.create_table "test_table", [{:name => "test col", :type => "string" }]
       resp = @ft.show_tables

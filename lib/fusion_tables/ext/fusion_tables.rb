@@ -72,7 +72,7 @@ module GData
 
         # ensure all column types are valid
         columns.each do |col|
-          col[:name] = col[:name].to_s
+          col[:name] = col[:name].to_s.gsub(/'/, "''")
           col[:type] = col[:type].to_s
 
           if !DATATYPES.include? col[:type].downcase
