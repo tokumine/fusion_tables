@@ -20,7 +20,7 @@ module GData
       def execute(sql)
         http_req = sql.upcase.match(/^(DESCRIBE|SHOW|SELECT)/) ? :sql_get : :sql_post
         json_resp = JSON.parse(self.send(http_req, sql).body)
-        
+
         if json_resp['rows'].nil?
           return []
         end

@@ -8,14 +8,14 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'fusion_tables'
 
 class Test::Unit::TestCase
-    
+
   def init_config
     if not defined? @config_file
       begin
         @config_file = YAML::load_file(File.join(File.dirname(__FILE__), 'test_config.yml'))
       rescue
         puts "Please configure your test_config.yml file using test_config.yml.sample as base"
-      end    
+      end
     end
     @config_file
   end
@@ -27,12 +27,12 @@ class Test::Unit::TestCase
   def password
     @config_file['password']
   end
-  
+
   def table_name
     @config_file['table_name']
-  end  
+  end
 
   def api_key
     @config_file['api_key']
-  end 
+  end
 end
