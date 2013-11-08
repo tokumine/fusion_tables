@@ -3,7 +3,7 @@
 # Twitter Fusion Tables Mashup
 # S.Tokumine 2010
 #
-# looks for tweets in the live stream around certain 
+# looks for tweets in the live stream around certain
 # cities and posts them to fusion tables with KML attached
 #
 # Gem dependencies:
@@ -51,14 +51,14 @@ ft = GData::Client::FusionTables.new
 ft.clientlogin(config["google_username"], config["google_password"])
 table_name = "TwitterFusion"
 cols = [
-  {:name => 'screen_name',  :type => 'string'},  
+  {:name => 'screen_name',  :type => 'string'},
   {:name => 'avatar',       :type => 'string'},
   {:name => 'text',         :type => 'string'},
   {:name => 'created',      :type => 'datetime'},
   {:name => 'url',          :type => 'string'},
   {:name => 'location',     :type => 'location'},
   {:name => 'iso',          :type => 'location'},
-  {:name => 'country_name', :type => 'location'},  
+  {:name => 'country_name', :type => 'location'},
   {:name => 'city',         :type => 'string'}
 ]
 
@@ -74,46 +74,46 @@ tw = TweetStream::Client.new(config["twitter_username"],config["twitter_password
 # configure friendly rate limit handling
 tw.on_limit do |skip_count|
   sleep 5
-end 
+end
 
 # start searching twitter stream and posting to FT
-tw.filter(:locations => places.values.join(",")) do |tweet|  
-  begin    
+tw.filter(:locations => places.values.join(",")) do |tweet|
+  begin
 
     country = "unknown"
-    iso     = "unknown"    
+    iso     = "unknown"
     begin
       country = tweet.try(:[],:place).try(:[], :country)
       iso = tweet.try(:[],:place).try(:[], :country_code)
     rescue
     end
-        
+
     # Divine the tweets geometry
     #
-    # overly complex due to 
+    # overly complex due to
     # * some US tweets have their lat/longs flipped (but not all...)
-    # * some geo tweets are made using a "place" envelope rather than exact lat/kng      
+    # * some geo tweets are made using a "place" envelope rather than exact lat/kng
     if tweet[:geo]
       if iso == 'US' && tweet[:geo][:coordinates][1] > 0
-        p = Point.from_x_y(tweet[:geo][:coordinates][0],tweet[:geo][:coordinates][1]) 
+        p = Point.from_x_y(tweet[:geo][:coordinates][0],tweet[:geo][:coordinates][1])
       else
-        p = Point.from_x_y(tweet[:geo][:coordinates][1],tweet[:geo][:coordinates][0]) 
-      end  
+        p = Point.from_x_y(tweet[:geo][:coordinates][1],tweet[:geo][:coordinates][0])
+      end
     else
       p = Polygon.from_coordinates(tweet[:place][:bounding_box][:coordinates]).envelope.center
     end
-  
+
     # work out which city the tweet is from by testing with an extended bounding box
     # BBox extention needed as twitter returns things outside our defined bboxes...
     city = "unknown"
     places.each do |key, value|
-      if !(p.x < value[0]-1 || p.x > value[2]+1 || p.y < value[1]-1 || p.y > value[3]+1)         
-        city = key.to_s.gsub("_"," ")    
+      if !(p.x < value[0]-1 || p.x > value[2]+1 || p.y < value[1]-1 || p.y > value[3]+1)
+        city = key.to_s.gsub("_"," ")
         break
       end
     end
-            
-    # pack data    
+
+    # pack data
     data << {
       "screen_name"  => tweet[:user][:screen_name],
       "avatar"       => tweet[:user][:profile_image_url],
@@ -124,20 +124,20 @@ tw.filter(:locations => places.values.join(",")) do |tweet|
       "iso"          => iso,
       "country_name" => country,
       "city"         => city
-    } 
+    }
   rescue => e
     puts "ERROR: #{e.inspect}, #{e.backtrace}"
     #let sleeping dogs lie...
-  end  
-  
+  end
+
   # let us know how we're doing
   puts "#{50-data.size}: #{city}, #{tweet.text}"
-  
-  # Post to fusion tables  
+
+  # Post to fusion tables
   if data.size == 50
     puts "sending data to fusion tables..."
     ft_data = data
     data = []
     table.insert ft_data
-  end      
+  end
 end

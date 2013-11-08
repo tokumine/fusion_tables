@@ -17,21 +17,21 @@ module GData
     class FusionTables < Base
       class Data
         include Enumerable
-        
+
         attr_reader :headers, :body, :live
-        alias :to_h :body  
-        
+        alias :to_h :body
+
         # configures headers hash and sets up
         def initialize options
           @headers = options[:headers]
-          @body = options[:body]          
+          @body = options[:body]
         end
-        
+
         # Reads in CSV
         def self.parse response
           body = []
           headers = []
-          
+
           first = true
           if CSV.const_defined? :Reader
             CSV::Reader.parse(response.body) do |row|
@@ -50,22 +50,22 @@ module GData
                 next
               end
               body << Hash[*headers.zip(row).flatten]
-            end              
-          end              
+            end
+          end
           self.new :headers => headers, :body => body
         end
-                            
-        # Implement enumerable                
+
+        # Implement enumerable
         def each
           @body.each { |i| yield i }
-        end                
-                                
+        end
+
         private
         # Encodes row according to type
         def encode
-          
+
         end
-        
+
       end
     end
   end
