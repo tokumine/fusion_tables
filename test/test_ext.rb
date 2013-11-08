@@ -38,14 +38,20 @@ class TestExt < Test::Unit::TestCase
       assert_equal "test_table", @table.name
     end
 
-    should "correct column names to a certain degree on create" do
-      table_name = "test_table"
-      column_name = "test'col"
-      @ft.create_table table_name, [{:name => column_name, :type => "string" }]
-      @table = @ft.show_tables.select{|t| t.name == table_name}.first
-      column_info = @table.describe
-      column_with_right_name = column_info.select{|c| c[:name] == column_name }.first
-      assert_equal column_name, column_with_right_name[:name]
+    should "escape single quotes in column names on table create" do
+      table_name = "test_table_with_single_quote_in_column_name"
+      expected_column_name = "test'col"
+      @ft.create_table table_name,
+        [{:name => expected_column_name, :type => "string" }]
+
+      table_just_created =
+        @ft.show_tables.select{|t| t.name == table_name}.first
+      columns_info = table_just_created.describe
+      column_with_quote_in_name =
+        columns_info.select{|c| c[:name] == expected_column_name }.first
+
+      actual_column_name = column_with_quote_in_name[:name]
+      assert_equal expected_column_name, actual_column_name
     end
 
     should "return you a list of your fusion tables" do
