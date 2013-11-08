@@ -52,6 +52,7 @@ class TestExt < Test::Unit::TestCase
 
       actual_column_name = column_with_quote_in_name[:name]
       assert_equal expected_column_name, actual_column_name
+      @ft.drop(table_just_created.id)
     end
 
     should "return you a list of your fusion tables" do
